@@ -8,7 +8,7 @@ import java.sql.Driver;
 import java.time.Duration;
 public class Product extends env_target {
     @Test
-    public void opendetailproductbynamaproduct() {
+    public void open_detail_product_by_nama_product() {
         System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
 
         driver = new ChromeDriver();
@@ -34,7 +34,7 @@ public class Product extends env_target {
     }
 
     @Test
-    public void opendetailproductbyimageproduct() {
+    public void open_detail_product_by_image_product() {
         System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
 
         driver = new ChromeDriver();
@@ -60,7 +60,7 @@ public class Product extends env_target {
     }
 
     @Test
-    public void addtochartviainventorypage() {
+    public void add_to_chart_via_inventory_page() {
         System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
 
         driver = new ChromeDriver();
@@ -86,7 +86,7 @@ public class Product extends env_target {
     }
 
     @Test
-    public void addtochartviaproductpage() {
+    public void add_to_chart_via_product_page() {
         System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
 
         driver = new ChromeDriver();
@@ -116,7 +116,7 @@ public class Product extends env_target {
     }
 
     @Test
-    public void movetoproductpageandbacktoinventorypage() {
+    public void move_to_product_page_and_back_to_inventory_page() {
         System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
 
         driver = new ChromeDriver();
@@ -144,5 +144,7 @@ public class Product extends env_target {
         );
         driver.quit();
     }
+
+
 
 }
