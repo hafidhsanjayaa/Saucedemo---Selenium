@@ -34,7 +34,7 @@ public class Product extends env_target {
     }
 
     @Test
-    public void opendetailproductbyimage() {
+    public void opendetailproductbyimageproduct() {
         System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
 
         driver = new ChromeDriver();
@@ -58,4 +58,91 @@ public class Product extends env_target {
         );
         driver.quit();
     }
+
+    @Test
+    public void addtochartviainventorypage() {
+        System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
+
+        driver = new ChromeDriver();
+        driver.manage().window().maximize();
+
+        driver.get(baseUrl);
+        Duration duration = Duration.ofSeconds(10);
+        WebDriverWait wait = new WebDriverWait(driver, duration);
+        wait.until(
+                ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"login-button\"]"))
+        );
+        driver.findElement(By.xpath("//*[@id=\"user-name\"]")).sendKeys("standard_user");
+        driver.findElement(By.xpath("//*[@id=\"password\"]")).sendKeys("secret_sauce");
+        driver.findElement(By.xpath("//*[@id=\"login-button\"]")).click();
+        wait.until(
+                ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"header_container\"]/div[1]/div[2]/div"))
+        );
+        driver.findElement(By.xpath("//*[@id=\"add-to-cart-sauce-labs-backpack\"]")).click();
+        wait.until(
+                ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"remove-sauce-labs-backpack\"]"))
+        );
+        driver.quit();
+    }
+
+    @Test
+    public void addtochartviaproductpage() {
+        System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
+
+        driver = new ChromeDriver();
+        driver.manage().window().maximize();
+
+        driver.get(baseUrl);
+        Duration duration = Duration.ofSeconds(10);
+        WebDriverWait wait = new WebDriverWait(driver, duration);
+        wait.until(
+                ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"login-button\"]"))
+        );
+        driver.findElement(By.xpath("//*[@id=\"user-name\"]")).sendKeys("standard_user");
+        driver.findElement(By.xpath("//*[@id=\"password\"]")).sendKeys("secret_sauce");
+        driver.findElement(By.xpath("//*[@id=\"login-button\"]")).click();
+        wait.until(
+                ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"header_container\"]/div[1]/div[2]/div"))
+        );
+        driver.findElement(By.xpath("//*[@id=\"item_4_title_link\"]/div")).click();
+        wait.until(
+                ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"inventory_item_container\"]/div/div/div[2]/div[1]"))
+        );
+        driver.findElement(By.xpath("//*[@id=\"add-to-cart-sauce-labs-backpack\"]")).click();
+        wait.until(
+                ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"remove-sauce-labs-backpack\"]"))
+        );
+        driver.quit();
+    }
+
+    @Test
+    public void movetoproductpageandbacktoinventorypage() {
+        System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
+
+        driver = new ChromeDriver();
+        driver.manage().window().maximize();
+
+        driver.get(baseUrl);
+        Duration duration = Duration.ofSeconds(10);
+        WebDriverWait wait = new WebDriverWait(driver, duration);
+        wait.until(
+                ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"login-button\"]"))
+        );
+        driver.findElement(By.xpath("//*[@id=\"user-name\"]")).sendKeys("standard_user");
+        driver.findElement(By.xpath("//*[@id=\"password\"]")).sendKeys("secret_sauce");
+        driver.findElement(By.xpath("//*[@id=\"login-button\"]")).click();
+        wait.until(
+                ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"header_container\"]/div[1]/div[2]/div"))
+        );
+        driver.findElement(By.xpath("//*[@id=\"item_4_title_link\"]/div")).click();
+        wait.until(
+                ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"inventory_item_container\"]/div/div/div[2]/div[1]"))
+        );
+        driver.findElement(By.xpath("//*[@id=\"back-to-products\"]")).click();
+        wait.until(
+                ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"header_container\"]/div[1]/div[2]/div"))
+        );
+        driver.quit();
+    }
+
 }
